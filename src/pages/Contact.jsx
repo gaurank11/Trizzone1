@@ -11,7 +11,6 @@ function Contact() {
 
     <Contact_Hero/>
     <Content/>
-    <Map/>
 
 
     

@@ -40,14 +40,14 @@ const PropertiesPage = () => {
           isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-50"
         }`}
       >
-        <div className="px-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 mt-12 md:pl-96 md:pr-52 pr-12 ">
+        <div className="px-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-1 mt-12 md:pl-96  pr-12 ">
           {properties.map((property, index) => (
-            <div key={index} className="relative group cursor-pointer bg-white shadow-lg rounded-lg overflow-hidden">
+            <div key={index} className="relative group cursor-pointer bg-white shadow-lg overflow-hidden">
               {/* Image */}
               <img
                 src={property.img}
                 alt={property.name}
-                className="w-full h-40 object-cover rounded-t-lg"
+                className="w-full h-40 object-cover "
               />
               {/* Hover Effect */}
               <div className="absolute inset-0 bg-gradient-to-t from-green-800/90 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex flex-col justify-end p-4">

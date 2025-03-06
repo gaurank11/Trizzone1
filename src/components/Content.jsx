@@ -50,47 +50,11 @@ const Content = () => {
     <section className="max-w-7xl mx-auto py-12 px-6 text-gray-600">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         
-        {/* Contact Info Section */}
-        <div className="bg-gradient-to-br from-sky-700 to-sky-600 p-8 rounded-lg shadow-lg text-white transition-transform duration-500 hover:scale-105">
-          <h2 className="text-3xl font-bold mb-4 flex items-center gap-4">
-            Reach Us <MapPinned className="text-3xl text-red-300" />
-          </h2>
-          <p className="text-lg md:text-xl">
-          TRIZZONE, SF 40 , Sushant Vyapar Kendra, Sushant Lok Phase I, Gurugram, Haryana 122002
-          </p>
-
-          {/* Contact Details */}
-          <div className="mt-10 space-y-5">
-            {[
-              { Icon: Mail, label: "Email", value: "", href: "" },
-              { Icon: Phone, label: "Phone", value: "", href: "" },
-              { Icon: Link, label: "Website", value: "", href: "" }
-            ].map(({ Icon, label, value, href }) => (
-              <p key={label} className="flex items-center">
-                <Icon className="mr-2 text-red-100 h-4 w-4 md:h-7 md:w-7" />
-                <span className="font-bold text-base md:text-2xl">{label}:</span>
-                <a href={href} className="underline text-red-50 hover:text-red-50 ml-2 text-sm md:text-xl">{value}</a>
-              </p>
-            ))}
-          </div>
-
-          {/* Social Links */}
-          <div className="mt-12 flex space-x-4">
-            {[
-              { Icon: Instagram, href: "", color: "text-pink-500 hover:text-pink-600" },
-              { Icon: Facebook, href: "", color: "text-blue-300 hover:text-blue-400" },
-              { Icon: Linkedin, href: "https://linkedin.com", color: "text-white hover:text-white" }
-            ].map(({ Icon, href, color }) => (
-              <a key={href} href={href} target="_blank" rel="noopener noreferrer">
-                <Icon className={`${color} md:h-8 md:w-8`} />
-              </a>
-            ))}
-          </div>
-        </div>
+       
 
         {/* Contact Form */}
         <div className="bg-white p-8 rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105">
-          <h2 className="text-3xl font-bold text-sky-700 mb-6">Let's Get in Touch</h2>
+          <h2 className="text-3xl font-bold text-black mb-6">Let's Get in Touch</h2>
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             
             {["name", "email"].map((field) => (
@@ -126,10 +90,48 @@ const Content = () => {
 
             <textarea name="message" placeholder="Message" value={formData.message} onChange={handleChange} className="w-full border p-3 rounded-md" required />
 
-            <button type="submit" className="w-full bg-sky-700 text-white p-3 rounded-md hover:bg-sky-600">
+            <button type="submit" className="w-full bg-black text-white p-3 rounded-md hover:bg-gray-900">
               Send Message
             </button>
           </form>
+        </div>
+
+         {/* Contact Info Section */}
+         <div className="bg-white p-8 rounded-lg shadow-lg text-black transition-transform duration-500 hover:scale-105">
+         <div className="md:mt-12 md:pt-12 ">
+          <p className="text-lg md:text-xl">
+          TRIZZONE, SF 40 , Sushant Vyapar Kendra, Sushant Lok Phase I, Gurugram, Haryana 122002
+          </p>
+
+          {/* Contact Details */}
+          <div className="mt-10 space-y-5">
+            {[
+              { Icon: Mail, label: "Email", value: "", href: "" },
+              { Icon: Phone, label: "Phone", value: "", href: "" },
+              { Icon: Link, label: "Website", value: "", href: "" }
+            ].map(({ Icon, label, value, href }) => (
+              <p key={label} className="flex items-center">
+                <Icon className="mr-2 text-black h-4 w-4 md:h-7 md:w-7" />
+                <span className="font-bold text-base md:text-2xl">{label}:</span>
+                <a href={href} className="underline text-red-50 hover:text-red-50 ml-2 text-sm md:text-xl">{value}</a>
+              </p>
+            ))}
+          </div>
+      
+
+          {/* Social Links
+          <div className="mt-12 flex space-x-4">
+            {[
+              { Icon: Instagram, href: "", color: "text-pink-500 hover:text-pink-600" },
+              { Icon: Facebook, href: "", color: "text-blue-300 hover:text-blue-400" },
+              { Icon: Linkedin, href: "https://linkedin.com", color: "text-white hover:text-white" }
+            ].map(({ Icon, href, color }) => (
+              <a key={href} href={href} target="_blank" rel="noopener noreferrer">
+                <Icon className={`${color} md:h-8 md:w-8`} />
+              </a>
+            ))}
+          </div> */}
+        </div>
         </div>
       </div>
     </section>
