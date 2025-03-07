@@ -5,6 +5,7 @@ import PropertiesPage from "./components/properties";
 import Contact from "./pages/Contact";
 import Header from "./components/header";
 import Preloader from "./components/loading";
+import Footer from "./components/footer";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -21,14 +22,15 @@ function App() {
   }
 
   return (
-<>
+<div>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/properties" element={<PropertiesPage />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-    </>
+      <Footer />
+    </div>
   );
 }
 
