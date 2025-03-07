@@ -12,7 +12,7 @@ const Loader = () => {
     const reverseTime = revealTime + text.length * 300; // (letters disappearing)
 
     setTimeout(() => setShowReverse(true), revealTime);
-    setTimeout(() => navigate("/home"), reverseTime + 1000); // Navigate after full animation
+    setTimeout(() => navigate("/"), reverseTime + 1000); // Navigate after full animation
   }, [navigate, text]);
 
   return (
