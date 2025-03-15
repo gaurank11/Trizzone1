@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from '../components/hero';
 
+
 import PropertiesPage from '../components/properties';
 
 const Home = () => {
