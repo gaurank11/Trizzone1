@@ -26,7 +26,7 @@ const Loader = () => {
       {/* "T" moves to the left, then reverses */}
       <motion.div
         initial={{ x: 0 }}
-        animate={{ x: showText ? -80 : 0 }}
+        animate={{ x: showText ? -20 : 0 }}
         transition={{ duration: 0.5 }}
         className="flex"
       >

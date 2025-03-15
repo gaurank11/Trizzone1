@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const categories = [
   "All",
   "Residential",
-  "CommercialInstitutional",
+  "Commercial",
   "Houses",
   "Hospitality",
   "Thumbnails",
