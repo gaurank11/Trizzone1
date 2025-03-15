@@ -13,7 +13,7 @@ const Contact_Hero = ({ onAnimationComplete }) => {
 
   return (
     <motion.section
-      className="relative h-[270px] md:h-[95vh] flex items-center justify-center overflow-hidden"
+      className="relative h-[350px] md:h-[95vh] flex items-center justify-center overflow-hidden"
       initial={{ clipPath: "inset(50% 0 50% 0)" }}
       animate={{ clipPath: "inset(0% 0 0% 0)" }}
       transition={{ duration: 1, ease: "easeOut" }}
@@ -32,7 +32,7 @@ const Contact_Hero = ({ onAnimationComplete }) => {
 
       {/* Content */}
       <motion.div
-        className="absolute bottom-10 left-10 text-white px-6 text-left"
+        className="absolute bottom-5 left-1 md:bottom-10 md:left-10 text-white px-6 text-left"
         initial={{ opacity: 1, y: 0 }}
         animate={{ opacity: hidden ? 0 : 1, y: hidden ? 20 : 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -40,7 +40,7 @@ const Contact_Hero = ({ onAnimationComplete }) => {
         {/* <p className="text-sm uppercase tracking-wide font-semibold mb-2 opacity-80">
           Contact
         </p> */}
-        <h1 className="text-4xl md:text-6xl font-bold">CONTACT</h1>
+        <h1 className="text-3xl md:text-6xl font-bold">CONTACT</h1>
         <p className="text-lg mt-4 max-w-[400px]">
           Contact us and let us know about your project, or find out more about
           our award-winning services.
