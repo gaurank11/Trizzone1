@@ -1,55 +1,95 @@
 import React, { useState, useEffect } from "react";
 
+const categories = [
+  "All",
+  "Residential",
+  "CommercialInstitutional",
+  "Houses",
+  "Hospitality",
+  "Thumbnails",
+  "World Map",
+];
+
+const propertiesData = {
+  All: [
+    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/Krisumi_Homepage.webp", name: "KRISUMI PROPERTIES", price: "$500,000" },
+    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/trevoc/t_home.webp", name: "TREVOC PROPERTIES", price: "$600,000" },
+    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/ss_camasa/ss_homepage.webp", name: "SS CAMASA", price: "$550,000" },
+  ],
+  Residential: [
+    { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfNfcyc4XbJI4pfi5nU5BG_7vn-kSYVvxafA&s", name: "KRISUMI PROPERTIES", price: "$500,000" },
+    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/ss_camasa/ss_homepage.webp", name: "SS CAMASA", price: "$550,000" },
+  ],
+  Houses: [
+    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/Krisumi_Homepage.webp", name: "KRISUMI PROPERTIES", price: "$500,000" },
+  ],
+  Hospitality: [
+    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/ss_camasa/ss_homepage.webp", name: "SS CAMASA", price: "$550,000" },
+  ],
+  CommercialInstitutional: [
+    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/trevoc/t_home.webp", name: "TREVOC PROPERTIES", price: "$600,000" },
+  ],
+};
+
 const PropertiesPage = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {
     setTimeout(() => {
       setIsVisible(true);
-    }, 200); // Adds slight animation delay
+    }, 200);
   }, []);
 
-  const properties = [
-    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/Krisumi_Homepage.webp", name: "KRISUMI PROPERTIES", price: "$500,000" },
-    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/trevoc/t_home.webp", name: "TREVOC PROPERTIES", price: "$600,000" },
-    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/ss_camasa/ss_homepage.webp", name: "SS CAMASA", price: "$550,000" },
-    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/sobha_altus/sobha_home.webp", name: "SOBHA ALTUS", price: "$800,000" },
-    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/Eldico/eldico_overview.webp", name: "ELDECO RESERVE", price: "$900,000" },
-    { img: "https://images.squarespace-cdn.com/content/v1/58487dc4b8a79b6d02499b60/1649818878171-HXGSYXD0JI23307551QB/Francis+York+One+of+the+Most+Beautiful+Homes+For+Sale+in+Illinois+6.jpeg", name: "FRANCIS YORK", price: "$1,200,000" },
-    { img: "https://cdn.pixabay.com/photo/2018/02/13/11/09/home-3150500_1280.jpg", name: "EXAMPLE PROPERTY 1", price: "$400,000" },
-    { img: "https://cdn.pixabay.com/photo/2021/02/09/20/45/architecture-5999913_1280.jpg", name: "EXAMPLE PROPERTY 2", price: "$420,000" },
-    { img: "https://cdn.pixabay.com/photo/2017/04/10/22/28/residence-2219972_1280.jpg", name: "EXAMPLE PROPERTY 3", price: "$450,000" },
-    { img: "https://cdn.pixabay.com/photo/2021/10/07/15/23/real-estate-6688945_1280.jpg", name: "EXAMPLE PROPERTY 4", price: "$470,000" },
-    { img: "https://cdn.pixabay.com/photo/2024/07/05/08/19/living-room-8874235_1280.jpg", name: "EXAMPLE PROPERTY 5", price: "$490,000" },
-    { img: "https://cdn.pixabay.com/photo/2016/12/30/07/59/kitchen-1940175_1280.jpg", name: "EXAMPLE PROPERTY 6", price: "$520,000" },
-    { img: "https://cdn.pixabay.com/photo/2017/06/17/12/59/luxury-home-2412145_1280.jpg", name: "EXAMPLE PROPERTY 7", price: "$540,000" },
-    { img: "https://cdn.pixabay.com/photo/2018/04/04/21/21/lawn-3291164_1280.jpg", name: "EXAMPLE PROPERTY 8", price: "$560,000" },
-    { img: "https://cdn.pixabay.com/photo/2016/02/19/16/29/construction-1210677_1280.jpg", name: "EXAMPLE PROPERTY 9", price: "$580,000" },
-  ];
-
   return (
-    <div className="min-h-screen bg-white text-black">
-      {/* Header Section */}
-      {/* <header className="bg-gray-200 py-6 px-8">
-        <h1 className="text-3xl font-bold text-black">Architecture</h1>
-      </header> */}
+    <div className="min-h-screen bg-white text-black flex flex-col md:flex-row mt-28 p-4">
+      
+      {/* MOBILE VIEW (Interiors First + Horizontal Categories) */}
+      <div className="md:hidden">
+        <h2 className="text-3xl font-bold mb-4">Interiors</h2>
+        <div className="flex overflow-x-auto gap-2 whitespace-nowrap pb-2">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`text-sm px-4 py-2 rounded-lg ${
+                selectedCategory === category ? "text-black font-bold" : "text-gray-400"
+              } hover:text-black`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
 
-      {/* Properties Grid */}
+      {/* DESKTOP VIEW (Sidebar Categories) */}
+      <div className="hidden md:flex md:w-1/4 flex-col space-y-2 p-4">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`text-left p-2 rounded-lg text-gray-400 text-sm hover:text-black ${
+              selectedCategory === category ? "text-black font-bold" : ""
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      {/* PROPERTIES GRID */}
       <div
-        className={`relative z-10 bg-white p-10 transition-all duration-1000 ease-in-out ${
+        className={`w-full md:w-3/4 transition-all duration-1000 ease-in-out ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-50"
         }`}
       >
-        <div className="md:px-5 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3  gap-1 mt-12 md:pl-96  md:pr-12 ">
-          {properties.map((property, index) => (
-            <div key={index} className="relative group cursor-pointer bg-white shadow-lg overflow-hidden">
-              {/* Image */}
-              <img
-                src={property.img}
-                alt={property.name}
-                className="w-full h-36 md:h-40 object-cover "
-              />
-              {/* Hover Effect */}
+        {/* Interiors Title (Only for Desktop) */}
+        <h2 className="hidden md:block text-3xl font-bold mb-4">Interiors</h2>
+
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {propertiesData[selectedCategory]?.map((property, index) => (
+            <div key={index} className="relative group cursor-pointer shadow-lg overflow-hidden">
+              <img src={property.img} alt={property.name} className="w-full h-40 object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-green-800/90 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex flex-col justify-end p-4">
                 <p className="text-white text-lg font-bold">{property.name}</p>
                 <p className="text-white text-sm">{property.price}</p>
@@ -58,6 +98,7 @@ const PropertiesPage = () => {
           ))}
         </div>
       </div>
+
     </div>
   );
 };
