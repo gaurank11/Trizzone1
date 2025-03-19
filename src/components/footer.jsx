@@ -1,14 +1,13 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPinterest } from "react-icons/fa";
 
 const Footer = () => {
   const [selectedFirstCol, setSelectedFirstCol] = useState(null);
   const [selectedSecondCol, setSelectedSecondCol] = useState(null);
 
-  // Static first column
   const firstColumn = ["Practice", "Projects", "People", "Contact"];
 
-  // Dynamic second column options based on first column selection
   const secondColumnOptions = {
     Practice: ["Ethos", "Publications", "Awards"],
     Projects: ["Architecture", "Interior Design", "Landscape"],
@@ -16,20 +15,16 @@ const Footer = () => {
     Contact: ["Support", "Inquiry", "Location"],
   };
 
-  // Dynamic third column options based on second column selection
   const thirdColumnOptions = {
     Ethos: ["Mission", "Values"],
     Publications: ["Research", "Articles"],
     Awards: ["National", "International"],
-
     Architecture: ["Commercial", "Residential"],
     "Interior Design": ["Luxury Homes", "Hotels"],
     Landscape: ["Parks", "Urban Design"],
-
     Team: ["Designers", "Engineers"],
     Leadership: ["CEO", "Directors"],
     Careers: ["Open Positions", "Internships"],
-
     Support: ["FAQs", "Help Center"],
     Inquiry: ["Business", "General"],
     Location: ["Headquarters", "Branches"],
@@ -39,53 +34,71 @@ const Footer = () => {
     <div className="bg-black p-10 text-white relative">
       <div className="flex justify-between">
         {/* Left Section - Three Column Menu */}
-        <div className="flex space-x-16">
+        <div className="flex space-x-10">
           {/* First Column */}
           <div>
             <ul>
               {firstColumn.map((item) => (
-                <li
+                <motion.li
                   key={item}
-                  className="cursor-pointer hover:text-gray-400"
+                  className="cursor-pointer p-2 text-center bg-white text-black rounded-md mb-2 hover:bg-gray-300"
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => {
                     setSelectedFirstCol(item);
-                    setSelectedSecondCol(null); // Reset third column
+                    setSelectedSecondCol(null);
                   }}
                 >
                   {item}
-                </li>
+                </motion.li>
               ))}
             </ul>
           </div>
 
-          {/* Second Column (Appears when first column is clicked) */}
+          {/* Second Column (Animated Expansion) */}
           {selectedFirstCol && secondColumnOptions[selectedFirstCol] && (
-            <div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+              className="p-4 bg-white text-black rounded-md shadow-lg"
+            >
               <h3 className="font-bold">{selectedFirstCol}</h3>
               <ul>
                 {secondColumnOptions[selectedFirstCol].map((item) => (
-                  <li
+                  <motion.li
                     key={item}
-                    className="cursor-pointer hover:text-gray-400"
+                    className="cursor-pointer p-2 text-center bg-gray-200 rounded-md mt-2 hover:bg-gray-300"
+                    whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedSecondCol(item)}
                   >
                     {item}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           )}
 
-          {/* Third Column (Appears when second column is clicked) */}
+          {/* Third Column (Animated Expansion) */}
           {selectedSecondCol && thirdColumnOptions[selectedSecondCol] && (
-            <div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+              className="p-4 bg-white text-black rounded-md shadow-lg"
+            >
               <h3 className="font-bold">{selectedSecondCol}</h3>
               <ul>
                 {thirdColumnOptions[selectedSecondCol].map((item) => (
-                  <li key={item} className="hover:text-gray-400">{item}</li>
+                  <motion.li
+                    key={item}
+                    className="p-2 text-center bg-gray-200 rounded-md mt-2 hover:bg-gray-300"
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {item}
+                  </motion.li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           )}
         </div>
 
@@ -108,7 +121,6 @@ const Footer = () => {
               <FaPinterest className="hover:text-gray-400" />
             </a>
           </div>
-
           <div>
             <span className="hover:text-gray-400 cursor-pointer">ENGLISH</span> |
             <span className="hover:text-gray-400 cursor-pointer"> 中文</span>

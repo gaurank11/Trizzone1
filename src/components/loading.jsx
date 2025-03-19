@@ -12,15 +12,16 @@ const Loader = () => {
   const [startFill, setStartFill] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setShowText(true), 4500);
     setTimeout(() => setShowPhrase(true), 1000);
     setTimeout(() => setShowPhrase(false), 4000);
     setTimeout(() => setShowCityscape(true), 0);
-    setTimeout(() => setStartFill(true), 3000); // Start fill from left after 1s
-    setTimeout(() => setReverseText(true), 7000);
-    setTimeout(() => navigate("/"), 9000);
-  }, [navigate]);
+    setTimeout(() => setShowText(true), 4500);
 
+    setTimeout(() => {
+      localStorage.setItem("animationPlayed", "true"); // Store state
+      navigate("/");
+    }, 9000);
+  }, [navigate]);
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-black text-white text-[70px] md:text-[280px] font-bold relative">
       {/* "T" moves to the left, then reverses */}
