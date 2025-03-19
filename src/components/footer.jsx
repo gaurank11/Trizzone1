@@ -5,6 +5,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPinterest } from "rea
 const Footer = () => {
   const [selectedFirstCol, setSelectedFirstCol] = useState(null);
   const [selectedSecondCol, setSelectedSecondCol] = useState(null);
+  const [language, setLanguage] = useState("ENGLISH");
 
   const firstColumn = ["Practice", "Projects", "People", "Contact"];
 
@@ -30,18 +31,22 @@ const Footer = () => {
     Location: ["Headquarters", "Branches"],
   };
 
+  const toggleLanguage = () => {
+    setLanguage(language === "ENGLISH" ? "HINDI" : "ENGLISH");
+  };
+
   return (
     <div className="bg-black p-10 text-white relative">
       <div className="flex justify-between">
-        {/* Left Section - Three Column Menu */}
-        <div className="flex space-x-10">
+        {/* Left Expandable Menu */}
+        <div className="flex space-x-6">
           {/* First Column */}
           <div>
             <ul>
               {firstColumn.map((item) => (
                 <motion.li
                   key={item}
-                  className="cursor-pointer p-2 text-center bg-white text-black rounded-md mb-2 hover:bg-gray-300"
+                  className="cursor-pointer py-2 hover:text-gray-400"
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
                     setSelectedFirstCol(item);
@@ -54,20 +59,19 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Second Column (Animated Expansion) */}
+          {/* Second Column - Expandable */}
           {selectedFirstCol && secondColumnOptions[selectedFirstCol] && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              className="p-4 bg-white text-black rounded-md shadow-lg"
+              className="pl-4 border-l border-gray-500"
             >
-              <h3 className="font-bold">{selectedFirstCol}</h3>
               <ul>
                 {secondColumnOptions[selectedFirstCol].map((item) => (
                   <motion.li
                     key={item}
-                    className="cursor-pointer p-2 text-center bg-gray-200 rounded-md mt-2 hover:bg-gray-300"
+                    className="cursor-pointer py-2 hover:text-gray-400"
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedSecondCol(item)}
                   >
@@ -78,22 +82,17 @@ const Footer = () => {
             </motion.div>
           )}
 
-          {/* Third Column (Animated Expansion) */}
+          {/* Third Column - Expandable */}
           {selectedSecondCol && thirdColumnOptions[selectedSecondCol] && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              className="p-4 bg-white text-black rounded-md shadow-lg"
+              className="pl-4 border-l border-gray-500"
             >
-              <h3 className="font-bold">{selectedSecondCol}</h3>
               <ul>
                 {thirdColumnOptions[selectedSecondCol].map((item) => (
-                  <motion.li
-                    key={item}
-                    className="p-2 text-center bg-gray-200 rounded-md mt-2 hover:bg-gray-300"
-                    whileTap={{ scale: 0.95 }}
-                  >
+                  <motion.li key={item} className="cursor-pointer py-2 hover:text-gray-400">
                     {item}
                   </motion.li>
                 ))}
@@ -102,34 +101,27 @@ const Footer = () => {
           )}
         </div>
 
-        {/* Right Section - Social Media Links */}
+      
+
+
+        {/* Right Section - Logo, Language & Social Media */}
         <div className="text-right space-y-4">
-          <div className="flex space-x-4 text-xl justify-end">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <FaFacebook className="hover:text-gray-400" />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <FaTwitter className="hover:text-gray-400" />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-              <FaInstagram className="hover:text-gray-400" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-              <FaLinkedin className="hover:text-gray-400" />
-            </a>
-            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">
-              <FaPinterest className="hover:text-gray-400" />
-            </a>
+          <div className="text-2xl font-bold">Trizzone</div>
+          <div className="flex justify-end space-x-4 text-xl">
+            <a href="#" className="hover:text-gray-400"><FaFacebook /></a>
+            <a href="#" className="hover:text-gray-400"><FaTwitter /></a>
+            <a href="#" className="hover:text-gray-400"><FaInstagram /></a>
+            <a href="#" className="hover:text-gray-400"><FaLinkedin /></a>
+            <a href="#" className="hover:text-gray-400"><FaPinterest /></a>
           </div>
           <div>
-            <span className="hover:text-gray-400 cursor-pointer">ENGLISH</span> |
-            <span className="hover:text-gray-400 cursor-pointer"> 中文</span>
+            <span className="hover:text-gray-400 cursor-pointer" onClick={toggleLanguage}>{language}</span>
           </div>
         </div>
       </div>
 
       {/* Bottom Copyright */}
-      <div className="text-center text-gray-500 mt-6">
+      <div className="text-center text-gray-500 mt-6 border-t border-gray-700 pt-4">
         © 2025 Copyright All Rights Reserved.
       </div>
     </div>
