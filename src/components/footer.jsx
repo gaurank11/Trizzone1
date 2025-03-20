@@ -39,14 +39,14 @@ const Footer = () => {
     <div className="bg-black p-10 text-white relative">
       <div className="flex justify-between">
         {/* Left Expandable Menu */}
-        <div className="flex space-x-6">
+        <div className="flex space-x-5 md:space-x-28 text-[7px] md:text-xl">
           {/* First Column */}
           <div>
             <ul>
               {firstColumn.map((item) => (
                 <motion.li
                   key={item}
-                  className="cursor-pointer py-2 hover:text-gray-400"
+                  className="cursor-pointer py-2 md:mx-8 hover:text-gray-400"
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
                     setSelectedFirstCol(item);
@@ -106,22 +106,21 @@ const Footer = () => {
 
         {/* Right Section - Logo, Language & Social Media */}
         <div className="text-right space-y-4">
-          <div className="text-2xl font-bold">Trizzone</div>
-          <div className="flex justify-end space-x-4 text-xl">
+          <div className="text-sm md:text-2xl font-bold">Trizzone</div>
+          <div className="flex justify-end space-x-4 text-xs md:text-xl">
             <a href="#" className="hover:text-gray-400"><FaFacebook /></a>
             <a href="#" className="hover:text-gray-400"><FaTwitter /></a>
             <a href="#" className="hover:text-gray-400"><FaInstagram /></a>
             <a href="#" className="hover:text-gray-400"><FaLinkedin /></a>
-            <a href="#" className="hover:text-gray-400"><FaPinterest /></a>
           </div>
           <div>
-            <span className="hover:text-gray-400 cursor-pointer" onClick={toggleLanguage}>{language}</span>
+            <span className="hover:text-gray-400 cursor-pointer text-sm md:text-md" onClick={toggleLanguage}>{language}</span>
           </div>
         </div>
       </div>
 
       {/* Bottom Copyright */}
-      <div className="text-center text-gray-500 mt-6 border-t border-gray-700 pt-4">
+      <div className="text-center text-gray-500 mt-6 border-t border-gray-700 pt-4 text-sm md:text-xl">
         © 2025 Copyright All Rights Reserved.
       </div>
     </div>
