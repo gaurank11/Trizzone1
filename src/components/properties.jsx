@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const categories = [
   "All",
@@ -88,13 +89,15 @@ const PropertiesPage = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {propertiesData[selectedCategory]?.map((property, index) => (
-            <div key={index} className="relative group cursor-pointer shadow-lg overflow-hidden">
+              <Link to="/projects" key={index}>
+            <div className="relative group cursor-pointer shadow-lg overflow-hidden">
               <img src={property.img} alt={property.name} className="w-full h-40 object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-green-800/90 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex flex-col justify-end p-4">
                 <p className="text-white text-lg font-bold">{property.name}</p>
                 <p className="text-white text-sm">{property.price}</p>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </div>

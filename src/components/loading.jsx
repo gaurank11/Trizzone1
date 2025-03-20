@@ -49,10 +49,10 @@ const Loader = () => {
 
       {/* Animated Phrase - Appearing One by One in Row, Disappearing Together */}
       <div className="flex gap-4 mt-4">
-        {["Cities.", "People.", "Design."].map((word, index) => (
+        {["Architectures.", "Interiors.", "Landscape."].map((word, index) => (
           <motion.div
             key={index}
-            className="text-2xl md:text-4xl"
+            className="text-xl md:text-4xl"
             initial={{ opacity: 0 }}
             animate={showPhrase ? { opacity: 1 } : { opacity: 0 }}
             transition={{

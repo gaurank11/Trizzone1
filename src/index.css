@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-scrollbar::-webkit-scrollbar {
+    height: 4px; /* Adjust scrollbar thickness */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #393535; /* Dark background */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #b0adad; /* White scrollbar */
+    border-radius: 10px;
+
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #cccccc; /* Lighter shade on hover */
+  }
+  
