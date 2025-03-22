@@ -9,6 +9,8 @@ import Footer from "./components/footer";
 import AboutUs from "./pages/About";
 import ProjectGallery from "./components/projects";
 import ProjectDetail from "./components/ProjectDetail";
+import Project1 from "./pages/project1";
+import HeroPage from "./components/Hero_Page";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,6 +36,8 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/projects" element={<ProjectGallery />} />
         <Route path="/project/:id" element={<ProjectDetail />} />
+        <Route path="/project1" element={<Project1/>} />
+        <Route path="/hero" element={<HeroPage/>} />
       </Routes>
       <Footer />
     </div>

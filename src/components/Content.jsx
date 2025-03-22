@@ -71,7 +71,7 @@ const Content = () => {
         <div className="bg-white p-8 rounded-lg shadow-lg text-black transition-transform duration-500 hover:scale-105 pt-10 mt-10">
           <h2 className="text-2xl md:text-4xl font-bold">Contact Information</h2>
           <p className="text-lg mt-4">
-            TRIZZONE, SF 40, Sushant Vyapar Kendra, Sushant Lok Phase I, Gurugram, Haryana 122002
+            contact@trizzone.com
           </p>
 
           {/* Contact Details */}
@@ -80,14 +80,14 @@ const Content = () => {
               {
                 Icon: Mail,
                 label: "Email",
-                value: "contact@example.com",
-                href: "mailto:contact@example.com",
+                value: "contact@trizzone.com",
+                href: "mailto:contact@trizzone.com",
               },
               {
                 Icon: Phone,
                 label: "Phone",
-                value: "+91 999999999999",
-                href: "tel:+919999999999",
+                value: "+91 124 4009858",
+                href: "tel:+911244009858",
               },
               {
                 Icon: Link,
@@ -110,7 +110,7 @@ const Content = () => {
           <div className="mt-6 flex space-x-4">
             {[
               { Icon: Instagram, href: "https://instagram.com", color: "text-pink-500" },
-              { Icon: Facebook, href: "https://facebook.com", color: "text-blue-600" },
+              { Icon: Facebook, href: "https://www.facebook.com/trizzone.design.consultancy.services/", color: "text-blue-600" },
               { Icon: Linkedin, href: "https://linkedin.com", color: "text-blue-700" },
             ].map(({ Icon, href, color }) => (
               <a key={href} href={href} target="_blank" rel="noopener noreferrer">

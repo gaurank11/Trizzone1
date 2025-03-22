@@ -13,8 +13,10 @@ const categories = [
 
 const propertiesData = {
   All: [
-    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/Krisumi_Homepage.webp", name: "KRISUMI PROPERTIES", price: "$500,000" },
-    { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/trevoc/t_home.webp", name: "TREVOC PROPERTIES", price: "$600,000" },
+    { img: "https://static.wixstatic.com/media/2db2e6_1485538733094508a402dd7b154b7c25~mv2_d_3888_2592_s_4_2.jpg/v1/fill/w_1901,h_869,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2db2e6_1485538733094508a402dd7b154b7c25~mv2_d_3888_2592_s_4_2.jpg", name: "ESSEL TOWER APARTMENT INTERIOR", project: "Project: Apartment Interior",
+      location: "Location: Essel Tower, Gurgaon, Haryana",year: "Year: 2015", team: "Team: Trizzone Design Studio" },
+    { img: "https://static.wixstatic.com/media/2db2e6_85fddecb1d3a4b549199cf18c4d9e9d7~mv2_d_3888_2592_s_4_2.jpg/v1/fill/w_1901,h_869,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2db2e6_85fddecb1d3a4b549199cf18c4d9e9d7~mv2_d_3888_2592_s_4_2.jpg", name: "MGI OFFICE INTERIOR", project: "Project: Corporate Office Interior",
+      location: "Location: Jasola, New Delhi",year: "Year: 2015", team: "Team: Trizzone Design Studio"  },
     { img: "https://raw.githubusercontent.com/potterzwhealrealty/photos/main/ss_camasa/ss_homepage.webp", name: "SS CAMASA", price: "$550,000" },
   ],
   Residential: [
@@ -89,12 +91,15 @@ const PropertiesPage = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {propertiesData[selectedCategory]?.map((property, index) => (
-              <Link to="/projects" key={index}>
-            <div className="relative group cursor-pointer shadow-lg overflow-hidden">
-              <img src={property.img} alt={property.name} className="w-full h-40 object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-green-800/90 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex flex-col justify-end p-4">
+              <Link to="/project1" key={index}>
+            <div className="relative group cursor-pointer shadow-lg overflow-hidden h-[200px]">
+              <img src={property.img} alt={property.name} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 flex flex-col justify-end p-4">
                 <p className="text-white text-lg font-bold">{property.name}</p>
-                <p className="text-white text-sm">{property.price}</p>
+                <p className="text-white text-sm">{property.project}</p>
+                <p className="text-white text-sm">{property.location}</p>
+                <p className="text-white text-sm">{property.year}</p>
+                <p className="text-white text-sm">{property.team}</p>
               </div>
             </div>
             </Link>
