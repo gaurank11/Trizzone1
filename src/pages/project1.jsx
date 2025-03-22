@@ -2,47 +2,13 @@ import React from "react";
 import ProjectGallery from "../components/projects";
 
 const projects = [
-  {
-    id: 1,
-    title: "NO. 40",
-    category: "RESIDENTIAL",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm9XTZJ_iQJubqUgivruOTXc3kymITA3Bbfg&s",
-  },
-  {
-    id: 2,
-    title: "MEWS HOUSE",
-    category: "RESIDENTIAL",
-    image: "https://minaleandmann.com/wp-content/uploads/2018/05/alexander_desktop.jpg",
-  },
-  {
-    id: 3,
-    title: "THORNTON",
-    category: "RESIDENTIAL",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8AQQBAcaEZKirUYWyUevw3FQ3i1xSWRLM-A&s",
-  },
-
-  {
-    id: 4,
-    title: "MEnss",
-    category: "RESIDENTIAL",
-    image: "https://minaleandmann.com/wp-content/uploads/2018/05/alexander_desktop.jpg",
-  },
-
-
-  {
-    id: 5,
-    title: "hhhs",
-    category: "RESIDENTIAL",
-    image: "https://minaleandmann.com/wp-content/uploads/2018/05/alexander_desktop.jpg",
-  },
-
-  {
-    id: 6,
-    title: "ssss",
-    category: "RESIDENTIAL",
-    image: "https://minaleandmann.com/wp-content/uploads/2018/05/alexander_desktop.jpg",
-  },
-];
+    { id: 1, title: "", category: "RESIDENTIAL", image: "/ESSEL/1.png" },
+    { id: 2, title: "", category: "RESIDENTIAL", image: "/ESSEL/2.png" },
+    { id: 3,title: "", category: "RESIDENTIAL", image: "/ESSEL/3.png" },
+    { id: 4, title: "", category: "RESIDENTIAL", image: "/ESSEL/4.png" },
+    { id: 5, title: "", category: "RESIDENTIAL", image: "/ESSEL/5.png" },
+    { id: 6, title: "", category: "RESIDENTIAL", image: "/ESSEL/6.png" },
+  ];
 
 const Project1 = () => {
   return (

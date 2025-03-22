@@ -11,6 +11,7 @@ import ProjectGallery from "./components/projects";
 import ProjectDetail from "./components/ProjectDetail";
 import Project1 from "./pages/project1";
 import HeroPage from "./components/Hero_Page";
+import Project2 from "./pages/project2";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -22,9 +23,9 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    return <Preloader />; // Show only the Preloader until loading is complete
-  }
+  // if (loading) {
+  //   return <Preloader />; // Show only the Preloader until loading is complete
+  // }
 
   return (
 <div>
@@ -37,6 +38,7 @@ function App() {
         <Route path="/projects" element={<ProjectGallery />} />
         <Route path="/project/:id" element={<ProjectDetail />} />
         <Route path="/project1" element={<Project1/>} />
+        <Route path="/project2" element={<Project2/>} />
         <Route path="/hero" element={<HeroPage/>} />
       </Routes>
       <Footer />
