@@ -23,9 +23,9 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // if (loading) {
-  //   return <Preloader />; // Show only the Preloader until loading is complete
-  // }
+   if (loading) {
+   return <Preloader />; // Show only the Preloader until loading is complete
+  }
 
   return (
 <div>
