@@ -14,21 +14,26 @@ import HeroPage from "./components/Hero_Page";
 import Project2 from "./pages/project2";
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 8000);
-    return () => clearTimeout(timer);
+    const preloaderShown = sessionStorage.getItem("preloaderShown");
+
+    if (!preloaderShown) {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        sessionStorage.setItem("preloaderShown", "true");
+      }, 6000);
+    }
   }, []);
 
-  // if (loading) {
-  //   return <Preloader />; // Show only the Preloader until loading is complete
-  // }
+  if (loading) {
+    return <Preloader />; // Show Preloader only on first visit
+  }
 
   return (
-<div>
+    <div>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -37,9 +42,9 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/projects" element={<ProjectGallery />} />
         <Route path="/project/:id" element={<ProjectDetail />} />
-        <Route path="/project1" element={<Project1/>} />
-        <Route path="/project2" element={<Project2/>} />
-        <Route path="/hero" element={<HeroPage/>} />
+        <Route path="/project1" element={<Project1 />} />
+        <Route path="/project2" element={<Project2 />} />
+        <Route path="/hero" element={<HeroPage />} />
       </Routes>
       <Footer />
     </div>

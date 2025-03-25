@@ -3,34 +3,72 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 function Hero() {
+  const text = "Trizzone";
   const images = ["/h1.jpg", "/h2.jpg", "/h3.jpg"];
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [reverseText, setReverseText] = useState(false);
+  const [showAnimation, setShowAnimation] = useState(
+    localStorage.getItem("hasSeenAnimation") !== "true"
+  );
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
+    if (showAnimation) {
+      // Set the flag in localStorage so it won't run again
+      localStorage.setItem("hasSeenAnimation", "true");
 
-    return () => clearInterval(interval);
-  }, []);
+      // Start image transition
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 3000);
+
+      // Start disappearing effect after 2 seconds
+      setTimeout(() => {
+        setReverseText(true);
+      }, 2000);
+
+      return () => clearInterval(interval);
+    }
+  }, [showAnimation]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {/* Curtain Animation */}
-      <motion.div
-        initial={{ y: 0 }} // Start fully covered
-        animate={{ y: "-100%" }} // Move up to reveal the page
-        transition={{ duration: 1.5, ease: "easeInOut" }}
-        className="fixed top-0 left-0 w-full h-full bg-black z-50"
-      />
-
+    <div className="relative flex flex-col items-center justify-center w-full h-screen text-white font-bold">
       {/* Background Image */}
       <img
         src={images[currentImageIndex]}
         alt={`Slide ${currentImageIndex + 1}`}
-        className="w-full h-full object-cover transition-all duration-700 ease-in-out"
+        className="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out"
       />
+
+      {/* "Trizzone" Text with Reverse Disappear Effect */}
+      {showAnimation && (
+        <motion.div className="absolute text-[70px] md:text-[280px] uppercase">
+          {text.split("").map((char, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 1 }}
+              animate={{
+                opacity:
+                  reverseText && index !== 0 // All letters except "T"
+                    ? 0
+                    : reverseText && index === 0 // "T" disappears last after 2 seconds
+                    ? 0
+                    : 1,
+              }}
+              transition={{
+                delay: reverseText
+                  ? index === 0 // If it's "T"
+                    ? 2.2 // Extra 2 seconds before fading
+                    : 0.2 * (text.length - index) // Other letters disappear sequentially
+                  : 0,
+                duration: 0.2,
+              }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </motion.div>
+      )}
 
       {/* Left Side Buttons */}
       <div className="absolute right-8 md:left-12 bottom-28 md:bottom-20 flex flex-row md:space-x-4">
