@@ -10,17 +10,18 @@ const Loader = () => {
   const [showCityscape, setShowCityscape] = useState(false);
   const [showPhrase, setShowPhrase] = useState(false);
   const [startFill, setStartFill] = useState(false);
+  const [showCurtain, setShowCurtain] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setShowPhrase(true), 1000);
     setTimeout(() => setShowPhrase(false), 4000);
     setTimeout(() => setShowCityscape(true), 0);
     setTimeout(() => setShowText(true), 4500);
+    setTimeout(() => setShowCurtain(true), 5800);
 
     setTimeout(() => {
-      localStorage.setItem("animationPlayed", "true"); // Store state
       navigate("/");
-    }, 9000);
+    }, 6000);
   }, [navigate]);
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-black text-white text-[70px] md:text-[280px] font-bold relative">
@@ -86,6 +87,16 @@ const Loader = () => {
     </motion.svg>
   </motion.div>
 )}
+
+ {/* Curtain Transition Effect */}
+ {showCurtain && (
+        <motion.div
+          initial={{ y: 0 }}
+          animate={{ y: "-100%" }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="fixed top-0 left-0 w-full h-full bg-black z-50"
+        />
+      )}
     </div>
   );
 };
