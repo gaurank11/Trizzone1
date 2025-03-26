@@ -7,7 +7,6 @@ const paragraphs = [
   "OUR SUCCESS IS DUE TO THE TALENTED ARCHITECTS, INTERIOR DESIGNERS, TECHNICIANS, AND ADMINISTRATORS WORKING AS AN EFFICIENT TEAM.",
   "THE COLLECTIVE POTENTIAL OF THE TALENTED AND COMMITTED INDIVIDUALS WHO WORK WITH WOW IS THE FIRM’S GREATEST ASSET.",
   "WE CAPITALIZE ON THE DIVERSITY OF CULTURE, CHARACTER AND TALENT THAT OUR TEAM BRINGS TO THE STUDIO.",
-  
 ];
 
 const clients = [
@@ -34,24 +33,26 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden pb-20">
-      {/* Background Changing Image */}
-      <img
-        src={images[currentIndex]}
-        alt={`Slide ${currentIndex + 1}`}
-        className="absolute top-0 left-0 w-full h-full object-cover"
-      />
+    <div>
+      {/* Background Image Section */}
+      <div className="relative w-full h-screen overflow-hidden">
+        <img
+          src={images[currentIndex]}
+          alt={`Slide ${currentIndex + 1}`}
+          className="absolute top-0 left-0 w-full h-full object-cover"
+        />
 
-      {/* Text Box */}
-      <div className="absolute  top-[35%] left-[3%] md:top-[20%] md:left-[10%] max-w-[370px] md:max-w-[500px] bg-black/60 p-6 rounded-md">
-        <p className="text-white text-lg md:text-2xl font-semibold text-left">
-          {paragraphs[currentIndex]}
-        </p>
+        {/* Text Box */}
+        <div className="absolute top-[40%] left-[2%] md:top-[40%] md:left-[34%] max-w-[370px] md:max-w-[550px] bg-black/60 p-6 rounded-md">
+          <p className="text-white text-lg md:text-2xl font-semibold text-left">
+            {paragraphs[currentIndex]}
+          </p>
+        </div>
       </div>
 
-      {/* Clientele Section */}
-      <div className="absolute bottom-5 w-full">
-        <h1 className="text-3xl md:text-5xl font-bold text-center text-white mb-5">
+      {/* Clients Section (Now Separate from the Image) */}
+      <div className="w-full py-10 bg-white">
+        <h1 className="text-3xl md:text-5xl font-bold text-center text-black mb-10">
           Our Clients and Partners
         </h1>
         <ClientCarousel />
@@ -76,18 +77,18 @@ const ClientCarousel = () => {
       { breakpoint: 1024, settings: { slidesToShow: 3 } },
       { breakpoint: 768, settings: { slidesToShow: 3 } },
       { breakpoint: 480, settings: { slidesToShow: 3 } }
-    ]
+    ],
   };
 
   return (
-    <div className="w-full mt-5">
+    <div className="w-full">
       <Slider {...settings}>
         {[...clients, ...clients].map((image, index) => (
-          <div key={index} className="px-4 flex justify-center items-center ">
+          <div key={index} className="px-4 flex justify-center items-center">
             <img
               src={image}
               alt={`Client ${index + 1}`}
-              className="w-40 h-40 md:w-56 md:h-56 object-contain md:bg-white"
+              className="w-40 h-40 md:w-56 md:h-56 object-contain bg-white p-2 rounded-md"
             />
           </div>
         ))}
