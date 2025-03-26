@@ -58,7 +58,7 @@ function Hero() {
 
       {/* "Trizzone" Text with Reverse Disappear Effect */}
       {showAnimation && (
-        <motion.div className="absolute text-[70px] md:text-[280px] uppercase">
+        <motion.div className="absolute text-[70px] md:text-[280px] uppercase  font-heading">
           {text.split("").map((char, index) => (
             <motion.span
               key={index}
@@ -87,7 +87,7 @@ function Hero() {
           <button
             key={index}
             onClick={() => navigate("/properties")}
-            className="px-3 md:px-6 py-1 md:py-2 text-white text-sm md:text-lg font-semibold rounded-md hover:text-gray-400 transition duration-300"
+            className="px-3 md:px-6 py-1 md:py-2 text-white text-sm md:text-lg font-semibold font-body rounded-md hover:text-gray-400 transition duration-300"
           >
             {text}
           </button>
@@ -100,7 +100,7 @@ function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="absolute right-12 bottom-1/4 md:bottom-20 text-white text-5xl md:text-7xl font-bold uppercase"
+          className="absolute right-12 bottom-1/4 md:bottom-20 text-white text-5xl md:text-7xl font-bold font-heading uppercase"
         >
           TRIZZONE
         </motion.div>
