@@ -58,7 +58,7 @@ function Hero() {
 
       {/* "Trizzone" Text with Reverse Disappear Effect */}
       {showAnimation && (
-        <motion.div className="absolute text-[70px] md:text-[280px] uppercase  font-heading">
+        <motion.div className="absolute text-[90px] md:text-[320px] top-[26%] left-[3%] md:top-[-4%] md:left-[8%] uppercase  font-heading">
           {text.split("").map((char, index) => (
             <motion.span
               key={index}
@@ -83,7 +83,7 @@ function Hero() {
 
       {/* Left Side Buttons */}
       <div className="absolute right-8 md:left-12 bottom-28 md:bottom-20 flex flex-row md:space-x-4">
-        {["Architectures", "Interiors", "Landscape"].map((text, index) => (
+        {["Architecture", "Interiors", "Landscape"].map((text, index) => (
           <button
             key={index}
             onClick={() => navigate("/properties")}
