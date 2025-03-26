@@ -24,7 +24,7 @@ const Loader = () => {
     }, 6000);
   }, [navigate]);
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-white text-black text-[70px] md:text-[280px] font-bold relative">
+    <div className="flex flex-col items-center justify-center h-screen bg-white text-black text-[70px] md:text-[280px] font-bold font-heading relative">
       {/* "T" moves to the left, then reverses */}
       <motion.div
         initial={{ x: 0 }}
@@ -49,11 +49,11 @@ const Loader = () => {
       </motion.div>
 
       {/* Animated Phrase - Appearing One by One in Row, Disappearing Together */}
-      <div className="flex gap-4 mt-4">
+      <div className="flex gap-4 mt-4 font-body">
         {["Architectures.", "Interiors.", "Landscape."].map((word, index) => (
           <motion.div
             key={index}
-            className="text-xl md:text-4xl"
+            className="text-xl md:text-4xl font-body"
             initial={{ opacity: 0 }}
             animate={showPhrase ? { opacity: 1 } : { opacity: 0 }}
             transition={{
