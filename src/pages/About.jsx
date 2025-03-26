@@ -52,7 +52,7 @@ const AboutUs = () => {
 
       {/* Clients Section (Now Separate from the Image) */}
       <div className="w-full py-10 bg-white">
-        <h1 className="text-3xl md:text-5xl font-bold text-center text-black mb-10">
+        <h1 className="text-3xl md:text-5xl font-semibold text-center text-gray-700 mb-10">
           Our Clients and Partners
         </h1>
         <ClientCarousel />
