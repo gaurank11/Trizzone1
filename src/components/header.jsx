@@ -45,7 +45,7 @@ export default function Header() {
           {/* Menu Links */}
           <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-gray-300 text-white">Home</Link>
           <Link to="/about" onClick={() => setMenuOpen(false)} className="hover:text-gray-300 text-white">About</Link>
-          <Link to="/services" onClick={() => setMenuOpen(false)} className="hover:text-gray-300 text-white">Services</Link>
+          <Link to="/service" onClick={() => setMenuOpen(false)} className="hover:text-gray-300 text-white">Services</Link>
           <Link to="/contact" onClick={() => setMenuOpen(false)} className="hover:text-gray-300 text-white">Contact</Link>
         </motion.nav>
       )}

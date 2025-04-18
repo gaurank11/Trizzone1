@@ -12,6 +12,8 @@ import ProjectDetail from "./components/ProjectDetail";
 import Project1 from "./pages/project1";
 import HeroPage from "./components/Hero_Page";
 import Project2 from "./pages/project2";
+import Service1 from "./components/service1";
+import Service from "./pages/service";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -39,6 +41,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/properties" element={<PropertiesPage />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/service" element={<Service />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/projects" element={<ProjectGallery />} />
         <Route path="/project/:id" element={<ProjectDetail />} />

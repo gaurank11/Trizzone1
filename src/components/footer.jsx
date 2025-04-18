@@ -106,7 +106,7 @@ const Footer = () => {
 
         {/* Right Section - Logo, Language & Social Media */}
         <div className="text-right space-y-4">
-          <div className="text-sm md:text-2xl font-bold">Trizzone</div>
+          <div className="text-sm md:text-2xl font-bold">TRIZZONE</div>
           <div className="flex justify-end space-x-4 text-xs md:text-xl">
             <a href="#" className="hover:text-gray-400"><FaFacebook /></a>
             <a href="#" className="hover:text-gray-400"><FaTwitter /></a>
@@ -120,9 +120,9 @@ const Footer = () => {
       </div>
 
       {/* Bottom Copyright */}
-      <div className="text-center text-gray-500 mt-6 border-t border-gray-700 pt-4 text-sm md:text-xl">
+      <p className="text-center text-gray-400 mt-6 border-t border-gray-400 pt-4 text-xs md:text-sm">
         © 2025 Copyright All Rights Reserved.
-      </div>
+      </p>
     </div>
   );
 };

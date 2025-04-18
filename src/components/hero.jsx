@@ -6,33 +6,49 @@ function Hero() {
   const text = "Trizzone";
   const images = ["/h1.jpg", "/h2.jpg", "/h3.jpg"];
   const navigate = useNavigate();
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [reverseText, setReverseText] = useState(false);
-  const [showAnimation, setShowAnimation] = useState(
-    localStorage.getItem("hasSeenAnimation") !== "true"
-  );
+  const [showAnimation, setShowAnimation] = useState(true);
+  const [showBigText, setShowBigText] = useState(false); // Controls right-side "TRIZZONE"
 
   useEffect(() => {
     if (showAnimation) {
-      // Set the flag in localStorage so it won't run again
-      localStorage.setItem("hasSeenAnimation", "true");
-
-      // Start image transition
+      // Start image transition every 3 seconds
       const interval = setInterval(() => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
       }, 3000);
 
-      // Start disappearing effect after 2 seconds
-      setTimeout(() => {
+      // Start disappearing text effect after 2 seconds
+      const timeout1 = setTimeout(() => {
         setReverseText(true);
       }, 2000);
 
-      return () => clearInterval(interval);
+      // Show big "TRIZZONE" after the reverse animation completes (2.2s delay)
+      const timeout2 = setTimeout(() => {
+        setShowBigText(true);
+      }, 4000); // Adjust delay to sync with animation
+
+      return () => {
+        clearInterval(interval);
+        clearTimeout(timeout1);
+        clearTimeout(timeout2);
+      };
     }
   }, [showAnimation]);
 
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-screen text-white font-bold">
+      {/* Cover Animation (Plays on Every Render) */}
+      {showAnimation && (
+        <motion.div
+          initial={{ y: 0 }}
+          animate={{ y: "-100%" }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="fixed top-0 left-0 w-full h-full bg-black z-50"
+        />
+      )}
+
       {/* Background Image */}
       <img
         src={images[currentImageIndex]}
@@ -42,24 +58,19 @@ function Hero() {
 
       {/* "Trizzone" Text with Reverse Disappear Effect */}
       {showAnimation && (
-        <motion.div className="absolute text-[70px] md:text-[280px] uppercase">
+        <motion.div className="absolute text-[90px] md:text-[320px] top-[26%] left-[3%] md:top-[-4%] md:left-[8%] uppercase  font-heading">
           {text.split("").map((char, index) => (
             <motion.span
               key={index}
               initial={{ opacity: 1 }}
               animate={{
-                opacity:
-                  reverseText && index !== 0 // All letters except "T"
-                    ? 0
-                    : reverseText && index === 0 // "T" disappears last after 2 seconds
-                    ? 0
-                    : 1,
+                opacity: reverseText ? (index === 0 ? 0 : 0) : 1,
               }}
               transition={{
                 delay: reverseText
-                  ? index === 0 // If it's "T"
-                    ? 2.2 // Extra 2 seconds before fading
-                    : 0.2 * (text.length - index) // Other letters disappear sequentially
+                  ? index === 0
+                    ? 2.2
+                    : 0.2 * (text.length - index)
                   : 0,
                 duration: 0.2,
               }}
@@ -72,21 +83,28 @@ function Hero() {
 
       {/* Left Side Buttons */}
       <div className="absolute right-8 md:left-12 bottom-28 md:bottom-20 flex flex-row md:space-x-4">
-        {["Architectures", "Interiors", "Landscape"].map((text, index) => (
+        {["Architecture", "Interiors", "Landscape"].map((text, index) => (
           <button
             key={index}
             onClick={() => navigate("/properties")}
-            className="px-3 md:px-6 py-1 md:py-2 text-white text-sm md:text-lg font-semibold rounded-md hover:text-gray-400 transition duration-300"
+            className="px-3 md:px-6 py-1 md:py-2 text-white text-sm md:text-lg font-semibold font-body rounded-md hover:text-gray-400 transition duration-300"
           >
             {text}
           </button>
         ))}
       </div>
 
-      {/* Right Side Big "TRIZZONE" */}
-      <div className="absolute right-12 bottom-1/4 md:bottom-20 text-white text-5xl md:text-7xl font-bold uppercase">
-        TRIZZONE
-      </div>
+      {/* Right Side Big "TRIZZONE" (Appears After Animation Completes) */}
+      {showBigText && (
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="absolute right-12 bottom-1/4 md:bottom-20 text-white text-5xl md:text-7xl font-bold font-heading uppercase"
+        >
+          TRIZZONE
+        </motion.div>
+      )}
     </div>
   );
 }
